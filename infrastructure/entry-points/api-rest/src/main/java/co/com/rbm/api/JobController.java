@@ -21,6 +21,7 @@ public class JobController {
     @ResponseStatus(HttpStatus.OK)
     public Flux<JobDto> getJobNameAccordingToSalary(@RequestParam Integer salary) {
 
+        log.info("Se ha ejecutado GET /job para salary = {}", salary);
         return Flux.just(JobDto.builder()
                 .name(jobUseCase.getJobNameAccordingToSalary(salary))
                 .salary(salary)
